@@ -4,10 +4,11 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'avant'
                 echo 'Building..'
+                sh 'make' 
+                archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true 
             }
-        }
+        }   
         stage('Test') {
             steps {
                 echo 'Testing..'
