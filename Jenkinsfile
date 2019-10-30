@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                bat "./mvnw clean compile"
+                echo 'avant'
                 echo 'Building..'
             }
         }
