@@ -5,8 +5,10 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh 'make' 
-                archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true 
+                bat(/"${mvnHome}\bin\mvn" -Dintegration-tests.skip=true clean package/)
+                def pom = readMavenPom file: 'pom.xml'
+                print pom.version
+                archive 'target*//*.jar'
             }
         }   
         stage('Test') {
