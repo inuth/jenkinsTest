@@ -8,7 +8,7 @@ pipeline {
                 echo 'Building..'
                 bat "./mvnw.cmd clean install"
             }
-        }   
+        }
         stage('Test') {
             steps {
                 echo 'Testing..'
