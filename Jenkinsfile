@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+    script {
+        System.setProperty("Dorg.jenkinsci.plugins.durabletask.BourneShellScript.LAUNCH_DIAGNOSTICS", true);
+    }
     stages {
         
         stage('Build') {
