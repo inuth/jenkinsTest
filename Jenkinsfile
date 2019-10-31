@@ -6,8 +6,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                call mvn clean
-                call mvn package
+                sh 'mvn -Dmaven.test.failure.ignore=true install' 
             }
         }   
         stage('Test') {
