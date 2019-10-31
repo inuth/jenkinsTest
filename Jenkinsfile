@@ -6,7 +6,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh 'mvn -Dmaven.test.failure.ignore=true install' 
+                bat "./mvnw.cmd clean install"
             }
         }   
         stage('Test') {
