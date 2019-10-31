@@ -2,11 +2,12 @@ pipeline {
     agent any
 
     stages {
+        
         stage('Build') {
             steps {
                 echo 'Building..'
-                bat(/"${mvnHome}\bin\mvn" -Dintegration-tests.skip=true clean package/)
-                archive 'target*//*.jar'
+                sh 'make' 
+                archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
             }
         }   
         stage('Test') {
