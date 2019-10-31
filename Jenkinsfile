@@ -6,8 +6,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                jdk = tool name: 'jdk 1.8'
-                env.JAVA_HOME = "${jdk}"
+                env.JAVA_HOME = "C:\Program Files\Java\jdk1.8.0_131"
                 bat "mvn clean install"
             }
         }
