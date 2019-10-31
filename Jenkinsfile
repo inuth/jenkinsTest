@@ -1,16 +1,17 @@
 pipeline {
     agent any
     
+    tools {
+        maven 'Maven 3.3.9'
+        jdk 'jdk8'
+    }
+    
     stages {
         
         stage('Build') {
             steps {
                 echo 'Building..'
-                script {
-                    System.setProperty("Dorg.jenkinsci.plugins.durabletask.BourneShellScript.LAUNCH_DIAGNOSTICS", "true");
-                }
-                sh 'make' 
-                archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
+                sh 'mvn -Dmaven.test.failure.ignore=true install'
             }
         }   
         stage('Test') {
